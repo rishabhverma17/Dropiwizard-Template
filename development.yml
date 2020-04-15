@@ -1,0 +1,23 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: ${APP_PORT}
+  adminConnectors:
+    - type: http
+      port: ${ADMIN_PORT}
+
+logging:
+  level: INFO
+  loggers:
+    com.demo: INFO
+
+appConfig:
+  appName: "Mongo-Microservice"
+  message: ${MESSAGE}
+  messageRepetitions: 3
+
+mongoDBConfig:
+  mongoHost : ${MONGO_HOST}
+  mongoPort : ${MONGO_PORT}
+  mongoDB : ${MONGO_DB}
+  collectionName: ${COLLECTION_NAME}

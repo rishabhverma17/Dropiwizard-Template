@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+}
+
+group 'com.rishabh'
+version '1.0-SNAPSHOT'
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+project.ext {
+	configFile = pConfigFile
+	mainClass = pMainClassName
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply from: "$rootDir/gradle/dependencies.gradle"
+apply from: "$rootDir/gradle/spotless.gradle"
+mainClassName = "$mainClass"
+
+
+run {
+	dependsOn build
+	def props = new Properties()
+	file("dev.env").withInputStream { props.load(it) }
+	environment props
+	jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005'
+	args 'server', "$configFile"
+	debug true
+}
