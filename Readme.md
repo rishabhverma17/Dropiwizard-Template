@@ -1,4 +1,4 @@
-![Java CI with Gradle](https://github.com/rishabhverma17/Dropiwizard-Template/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master) 
+![Build](https://github.com/rishabhverma17/Dropiwizard-Template/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master) 
 
 # Dropwizard Microservice Template (Gradle)
 
